@@ -1,0 +1,29 @@
+query CartInput {
+  shop {
+    buyXGetY: metafield(namespace: "custom", key: "buy_x_get_y") {
+      jsonValue
+    }
+  }
+  cart {
+    lines {
+      id
+      quantity
+      merchandise {
+        ... on ProductVariant {
+          product {
+            id
+            title
+          }
+        }
+      }
+      cost {
+        subtotalAmount {
+          amount
+        }
+      }
+    }
+  }
+  discount {
+    discountClasses
+  }
+}
