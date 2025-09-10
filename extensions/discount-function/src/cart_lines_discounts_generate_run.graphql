@@ -5,6 +5,11 @@ query CartInput {
     }
   }
   cart {
+    cost {
+      totalAmount {
+        amount
+      }
+    }
     lines {
       id
       quantity
