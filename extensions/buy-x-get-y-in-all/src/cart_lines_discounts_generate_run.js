@@ -55,6 +55,7 @@ export function cartLinesDiscountsGenerateRun(input) {
   const operations = [];
 
   try {
+    const totalPrice = input.cart.cost.totalAmount.amount;
     const buyXGetY = input.shop.buyXGetY.jsonValue;
     const discountValue = Math.min(Math.max(0, buyXGetY.discount), 100) || 0;
     const discountTitle = buyXGetY.title;
@@ -76,8 +77,8 @@ export function cartLinesDiscountsGenerateRun(input) {
     if (!hasProductDiscountClass) {
       return {operations: []};
     }
-    
-    if (hasProductDiscountClass && hasProduct(offerProducts.buy, input.cart.lines) && minimalValue > 0) {
+    console.log(minimalValue, totalPrice)
+    if (hasProductDiscountClass && hasProduct(offerProducts.buy, input.cart.lines) && totalPrice >= minimalValue) {
       operations.push({
         productDiscountsAdd: {
           candidates: [
