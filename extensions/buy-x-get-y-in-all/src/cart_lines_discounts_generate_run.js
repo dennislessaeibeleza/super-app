@@ -7,6 +7,21 @@
  * 1. O CLIENTE ADICIONA UM PRODUTO [X]( ALVO );
  * 2. A PARTIR DISSO 50% DE DESCONTO É APLICADO A TODOS OS OUTROS PRODUTOS;
  * 
+ * Example of entry on Shop metafield:
+ *  {
+      "title": "50% OFF",
+      "discount": 50,
+      "maxProducts": 3,
+      "minimalValue": 230,
+      "buy": [
+        "9031571800215"
+      ],
+      "get": [
+        "9031571800215",
+        "9031572062359",
+        "9031572193431"
+      ]
+    }
  */
 
 import {
