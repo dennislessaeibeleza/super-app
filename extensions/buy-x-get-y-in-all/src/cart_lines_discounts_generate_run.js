@@ -41,13 +41,10 @@ function hasProduct(offerProductsByIds, cartItems) {
 
 function getItemsByProductId(cartItems, offerProducts, limit) {
   const offerTriggerProductId = offerProducts.buy[0];
-
-  return offerProducts.get.reduce((result, productId) => {
-    const line = cartItems.find(line => {
-      return line.merchandise.product.id === productId;
-    });
-
-    if (line && limit > 0) {
+  const lines = cartItems.filter(line =>  offerProducts.get.some(productId => line.merchandise.product.id === productId));
+  
+  return lines.reduce((result, line) => {
+    if (limit > 0) {
       let quantity = Math.min(line.merchandise.product.id === offerTriggerProductId ? line.quantity - 1: line.quantity, limit);
       
       if (quantity > 0) {
@@ -61,7 +58,6 @@ function getItemsByProductId(cartItems, offerProducts, limit) {
         });
       }
     }
-    
     return result;
   }, []);
 }
@@ -92,7 +88,6 @@ export function cartLinesDiscountsGenerateRun(input) {
     if (!hasProductDiscountClass) {
       return {operations: []};
     }
-    
     if (hasProductDiscountClass && hasProduct(offerProducts.buy, input.cart.lines) && totalPrice >= minimalValue) {
       operations.push({
         productDiscountsAdd: {
