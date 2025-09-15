@@ -43,7 +43,7 @@ function getItemsByProductId(cartItems, offerProducts, limit) {
   const offerTriggerProductId = offerProducts.buy[0];
   const lines = cartItems.filter(line =>  offerProducts.get.some(productId => line.merchandise.product.id === productId));
   
-  return lines.reduce((result, line) => {
+  return lines.reverse().reduce((result, line) => {
     if (limit > 0) {
       let quantity = Math.min(line.merchandise.product.id === offerTriggerProductId ? line.quantity - 1: line.quantity, limit);
       
