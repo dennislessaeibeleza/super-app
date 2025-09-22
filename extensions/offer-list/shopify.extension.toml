@@ -8,6 +8,9 @@ api_version = "2025-07"
 [[extensions]]
 name = "Offer list"
 handle = "offer-list"
+
+uid = "581eadfb-efca-c7e1-d7ab-613eb67f989b06aa811f"
+
 type = "ui_extension"
 
 

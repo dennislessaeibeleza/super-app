@@ -8,6 +8,9 @@ api_version = "2025-07"
 [[extensions]]
 name = "Gift by dicount code"
 handle = "gift-by-dicount-code"
+
+uid = "deacc1d9-922b-90a7-7515-29c5e8d95427fb48fe69"
+
 type = "ui_extension"
 
 
