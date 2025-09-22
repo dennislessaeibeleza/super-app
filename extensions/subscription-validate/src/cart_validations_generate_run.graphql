@@ -1,0 +1,10 @@
+query CartValidationsGenerateRunInput {
+  cart {
+    lines {
+      appstleBBName: attribute(key: "__appstle-bb-name") {
+        value
+      }
+      quantity
+    }
+  }
+}
