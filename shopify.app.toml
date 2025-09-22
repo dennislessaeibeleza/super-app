@@ -7,7 +7,6 @@ embedded = true
 handle = "super-app-22"
 
 [build]
-include_config_on_deploy = true
 
 [webhooks]
 api_version = "2025-07"
