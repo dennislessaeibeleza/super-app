@@ -1,0 +1,34 @@
+query CartInput {
+  shop {
+    discountCheapestItem: metafield(namespace: "super_app", key: "discount_cheapest_item") {
+      jsonValue
+    }
+  }
+  cart {
+    cost {
+      totalAmount {
+        amount
+      }
+    }
+    lines {
+      id
+      quantity
+      merchandise {
+        ... on ProductVariant {
+          product {
+            id
+            title
+          }
+        }
+      }
+      cost {
+        subtotalAmount {
+          amount
+        }
+      }
+    }
+  }
+  discount {
+    discountClasses
+  }
+}
