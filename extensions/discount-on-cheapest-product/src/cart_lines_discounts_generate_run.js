@@ -36,7 +36,7 @@ function hasTriggersProducts(cartLines, triggersProducts) {
 function getCheapestItem(cartLines, excludeIds = []) {
   const nonZeroLines = cartLines.filter(line => (line.cost.subtotalAmount.amount > 0));
   const targetItems = nonZeroLines.filter(line => !excludeIds.some(id => line.merchandise.product.id === `gid://shopify/Product/${id}`));
-
+  
   if (nonZeroLines.length === 0) {
     return null;
   }
@@ -95,7 +95,7 @@ export function cartLinesDiscountsGenerateRun({ cart, shop, discount}) {
     if (cheapestItem === null) {
       return {operations: []};
     }
-
+    
     operations.push({
       productDiscountsAdd: {
         candidates: [

@@ -20,9 +20,10 @@ function validateLines(lines, planName) {
   }).length;
 }
 
-export function cartValidationsGenerateRun({ cart }) {
+export function cartValidationsGenerateRun({ shop, cart }) {
   try {
-    const subscriptions = {
+    const settings = shop.settings?.jsonValue || {};
+    const subscriptions = Object.assign({
       '3 meses': {
         name: 'Hidratei subscription - 3 meses',
         min: 3,
@@ -38,9 +39,9 @@ export function cartValidationsGenerateRun({ cart }) {
         min: 5,
         max: 8
       }
-    };
-
+    }, settings.plans);
     const operations = [];
+
     for(const subscription in subscriptions) {
       const subscriptionProductsCount = validateLines(cart.lines, subscription);
       

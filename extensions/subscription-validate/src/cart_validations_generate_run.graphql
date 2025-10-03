@@ -1,4 +1,9 @@
 query CartValidationsGenerateRunInput {
+  shop {
+    settings: metafield(namespace: "hidratei_checkout_app", key: "subscription_validate") {
+      jsonValue
+    }
+  }
   cart {
     lines {
       appstleBBName: attribute(key: "__appstle-bb-name") {
